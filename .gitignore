@@ -1,0 +1,51 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Byte-compiled
+*.pyc
+
+# --- ML / Data Science ---
+# Ignore trained model files
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.sav
+*.npy
+*.npz
+
+# Large datasets
+data/
+*.csv
+*.tsv
+*.xlsx
+
+# TensorBoard
+runs/
+
+# Scikit-learn / XGBoost model outputs
+*.model
+*.bin
+
+# --- OS / Editor files ---
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
