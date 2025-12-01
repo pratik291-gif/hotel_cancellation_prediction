@@ -1,0 +1,43 @@
+name: ML Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-train:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Pipeline (Train and Evaluate)
+      run: |
+        # Assuming data is present or downloaded. 
+        # For this example, we might need to mock data or skip if data is not in repo.
+        # Since the data is local, we can't run this on GitHub Actions without the data.
+        # We'll add a check or just run linting if data is missing.
+        if [ -f "hotel_cancellation_prediction/data/Hotel Reservations.csv" ]; then
+          python main.py --step all
+        else
+          echo "Data not found. Skipping training."
+        fi
+        
+    - name: Archive Model
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: trained-model
+        path: model.pkl
